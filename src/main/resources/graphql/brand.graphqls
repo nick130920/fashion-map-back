@@ -1,0 +1,70 @@
+# Brand Response Object
+# =====================
+# Represents a brand response, containing information about a brand.
+type BrandResponse {
+    # Unique identifier for the brand
+    id: ID!
+    # Name of the brand
+    name: String!
+    # Description of the brand
+    description: String
+    # Instagram handle of the brand
+    instagramHandle: String
+    # Website URL of the brand
+    websiteUrl: String
+    # List of stores associated with the brand
+    stores: [Store]
+    # List of classifications associated with the brand
+    classifications: [ClassificationResponse]
+}
+
+# Brand Request Input
+# ===================
+# Represents a brand request, containing information to create or update a brand.
+input BrandRequest {
+    # Name of the brand
+    name: String!
+    # Description of the brand
+    description: String
+    # Website URL of the brand
+    websiteUrl: String
+    # Instagram handle of the brand
+    instagramHandle: String
+    # List of stores to associate with the brand
+    stores: [StoreRequest]
+    # List of classifications to associate with the brand
+    classifications: [ClassificationRequest]
+}
+
+# Update Brand Request Input
+# ==========================
+# Represents an update brand request, containing information to update an existing brand.
+input UpdateBrandRequest {
+    # Unique identifier for the brand to update
+    id: ID!
+    # New name of the brand
+    name: String
+    # New description of the brand
+    description: String
+    # New Instagram handle of the brand
+    instagramHandle: String
+    # New website URL of the brand
+    websiteUrl: String
+}
+
+# Brand Filter Input
+# ==================
+# Represents a brand filter, containing criteria to filter brands.
+input BrandFilter {
+    # Name of the brand to filter by
+    name: String
+    # Classification ID to filter by
+    classificationId: ID
+    # Order by field (e.g. name, description)
+    orderBy: String
+    # Page number for pagination
+    page: Int
+    # Page size for pagination
+    size: Int
+}
+

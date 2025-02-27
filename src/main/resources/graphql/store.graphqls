@@ -1,0 +1,12 @@
+type Store {
+    id: ID!
+    name: String
+    location: String
+}
+
+input StoreRequest {
+    id: ID
+    name: String
+    location: String
+    images: [Upload]
+}

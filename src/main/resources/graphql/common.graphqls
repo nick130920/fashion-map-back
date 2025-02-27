@@ -1,0 +1,17 @@
+scalar DateTime
+scalar Long
+scalar Email
+scalar Upload
+
+enum EntityType {
+    BRAND
+    STORE
+    USER
+    PRODUCT
+    REVIEW
+}
+
+type Image {
+    id: ID!
+    url: String!
+}

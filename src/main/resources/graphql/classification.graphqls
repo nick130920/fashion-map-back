@@ -1,0 +1,137 @@
+"""
+Input used to filter classifications.
+"""
+input ClassificationFilter {
+    """
+    The name of the classification to filter by.
+    """
+    name: String
+
+    """
+    An array of classification type IDs to filter by.
+    """
+    types: [ID]
+
+    """
+    The field to order the results by.
+    """
+    orderBy: String
+
+    """
+    The page number for pagination.
+    """
+    page: Int
+
+    """
+    The number of items per page for pagination.
+    """
+    size: Int
+}
+
+"""
+Response type for classifications.
+"""
+type ClassificationResponse {
+    """
+    The unique identifier of the classification.
+    """
+    id: ID!
+
+    """
+    The name of the classification.
+    """
+    name: String!
+
+    """
+    The icon associated with the classification.
+    """
+    icon: String
+
+    """
+    The type of the classification.
+    """
+    classificationType: ClassificationType
+}
+
+"""
+Type representing a classification category.
+"""
+type ClassificationType {
+    """
+    The unique identifier of the classification type.
+    """
+    id: ID!
+
+    """
+    The name of the classification type.
+    """
+    name: String!
+
+    """
+    The display name of the classification type.
+    """
+    displayName: String
+
+    """
+    The icon associated with the classification type.
+    """
+    icon: String
+
+    """
+    An array of classifications belonging to this type.
+    """
+    classifications: [ClassificationResponse]
+}
+
+"""
+Input for creating or updating a classification type.
+"""
+input ClassificationTypeRequest {
+    """
+    The unique identifier of the classification type.
+    """
+    id: ID
+    """
+    The name of the classification type.
+    """
+    name: String!
+
+    """
+    The display name of the classification type.
+    """
+    displayName: String!
+
+    """
+    The icon associated with the classification type.
+    """
+    icon: String
+}
+
+"""
+Input for creating or updating a classification.
+"""
+input ClassificationRequest {
+    """
+    The unique identifier of the classification (optional for creation).
+    """
+    id: ID
+
+    """
+    The name of the classification.
+    """
+    name: String
+
+    """
+    The classification type associated with this classification.
+    """
+    classificationType: ClassificationTypeRequest
+
+    """
+    The icon associated with the classification.
+    """
+    icon: String
+}
+
+
+
+

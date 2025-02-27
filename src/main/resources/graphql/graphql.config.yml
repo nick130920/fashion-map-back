@@ -1,0 +1,21 @@
+schema:
+  - http://localhost:8080/graphql # URL del servidor GraphQL en Spring Boot
+documents:
+  - src/main/resources/graphql/queries/*.graphql # Carpeta donde estarán las consultas/mutaciones
+generates:
+  src/main/java/com/co/fashion/infrastructure/adapter/input/graphql/generated/:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-resolvers
+extensions:
+  endpoints:
+    default:
+      url: http://localhost:8080/graphql
+      headers:
+        Content-Type: application/json
+client:
+  name: "graphql-client"
+  service:
+    name: "graphql-api"
+    url: "http://localhost:8080/graphql"

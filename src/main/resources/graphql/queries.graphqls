@@ -1,0 +1,33 @@
+#   Defines the available queries for the GraphQL API.
+type Query {
+
+    #   Retrieves all brands.
+    #   @return A list of BrandResponse objects representing all brands.
+    getAllBrands: [BrandResponse]
+
+    #   Retrieves classifications based on the provided filter.
+    #   @param filter The ClassificationFilter object containing filter criteria.
+    #   @return A non-null list of ClassificationResponse objects matching the filter criteria.
+    classifications(filter: ClassificationFilter): [ClassificationResponse!]!
+
+    #    Retrieves a brand by its ID.
+    #   @param id The unique identifier of the brand.
+    #   @return A BrandResponse object representing the brand with the specified ID.
+    getBrandById(id: ID!): BrandResponse
+
+
+    #   Retrieves all classification types.
+    #   @return A non-null list of ClassificationType objects representing all available classification types.
+    getClassificationTypes: [ClassificationType!]!
+
+    #   Retrieves classifications based on the provided filter request.
+    #   @param classificationFilterRequest The ClassificationFilter object containing filter criteria.
+    #   @return A non-null list of ClassificationResponse objects matching the filter criteria.
+    getClassifications(classificationFilterRequest: ClassificationFilter): [ClassificationResponse!]!
+
+    #   Retrieves all classifications.
+    #   @return A non-null list of ClassificationResponse objects representing all classifications.
+    getAllClassifications: [ClassificationResponse!]!
+}
+
+
