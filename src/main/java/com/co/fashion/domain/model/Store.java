@@ -20,6 +20,8 @@ public class Store extends Auditable {
 	private Long id;
 	private String name;
 	private String location;
+	private Double latitude;
+	private Double longitude;
 
 	@Enumerated(EnumType.STRING)
 	private StoreType type;

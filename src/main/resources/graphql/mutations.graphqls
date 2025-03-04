@@ -1,21 +1,25 @@
 # Defines the available mutations for the GraphQL API.
 type Mutation {
     # Creates a new brand.
+    # =====================
     # @param brandRequest The BrandRequest object containing the brand's details.
     # @return The created BrandResponse object.
     createBrand(brandRequest: BrandRequest): BrandResponse!
 
     # Updates an existing brand.
+    # =====================
     # @param updateBrandRequest The UpdateBrandRequest object containing the brand's updated details.
     # @return The updated BrandResponse object.
     updateBrand(updateBrandRequest: UpdateBrandRequest!): BrandResponse!
 
     # Deletes a brand by its ID.
+    # =====================
     # @param id The unique identifier of the brand to delete.
     # @return A boolean indicating whether the deletion was successful.
     deleteBrand(id: ID!): Boolean!
 
     # Uploads an image for a specific entity.
+    # =====================
     # @param entityId The ID of the entity to associate the image with.
     # @param entityType The type of entity to associate the image with.
     # @param file The image file to upload.
@@ -23,48 +27,82 @@ type Mutation {
     uploadImage(entityId: ID!, entityType: EntityType!, file: Upload!): Image!
 
     # Creates a new classification.
+    # =====================
     # @param classificationRequest The ClassificationRequest object containing the classification's details.
     # @return The created ClassificationResponse object.
     createClassification(classificationRequest: ClassificationRequest!): ClassificationResponse!
 
     # Creates multiple new classifications.
+    # =====================
     # @param classificationRequests A list of ClassificationRequest objects containing the classifications' details.
     # @return A list of created ClassificationResponse objects.
     createClassifications(classificationRequests: [ClassificationRequest!]!): [ClassificationResponse!]!
 
     # Updates multiple existing classifications.
+    # =====================
     # @param classificationRequests A list of ClassificationRequest objects containing the classifications' updated details.
     # @return A list of updated ClassificationResponse objects.
     updateClassifications(classificationRequests: [ClassificationRequest!]!): [ClassificationResponse!]!
 
     # Creates a new classification type.
+    # =====================
     # @param classificationTypeRequest The ClassificationTypeRequest object containing the classification type's details.
     # @return The created ClassificationType object.
     createClassificationType(classificationTypeRequest: ClassificationTypeRequest!): ClassificationType!
 
     # Creates multiple new classification types.
+    # =====================
     # @param classificationTypeRequests A list of ClassificationTypeRequest objects containing the classification types' details.
     # @return A list of created ClassificationType objects.
     createClassificationTypes(classificationTypeRequests: [ClassificationTypeRequest!]!): [ClassificationType!]!
 
     # Creates a new user.
+    # =====================
     # @param userRequest The UserRequest object containing the user's details.
     # @return The created User object.
     createUser(userRequest: UserRequest!): User!
 
     # Adds a role to an existing user.
+    # =====================
     # @param userId The ID of the user to add the role to.
     # @param roleName The name of the role to add.
     # @return The updated User object.
     addRoleToUser(userId: ID!, roleName: String!): User!
 
     # Creates a new role.
+    # =====================
     # @param roleRequest The RoleRequest object containing the role's details.
     # @return The created Role object.
     createRole(roleRequest: RoleRequest!): Role!
 
     # Creates multiple new roles.
+    # =====================
     # @param roleRequest A list of RoleRequest objects containing the roles' details.
     # @return A list of created Role objects.
     createRoles(roleRequest: [RoleRequest!]!): [Role!]!
+
+    # Creates a new store.
+    # =====================
+    # @param storeRequest The StoreRequest object containing the store's details.
+    # @return The created Store object.
+    createStore(storeRequest: StoreRequest!): StoreResponse!
+
+    # Creates multiple new stores.
+    # =====================
+    # @param storeRequest A list of StoreRequest objects containing the stores' details.
+    # @return A list of created Store objects.
+    createStores(storeRequest: [StoreRequest!]!): [StoreResponse!]!
+
+    # Updates an existing store.
+    # =====================
+    # @param id The ID of the store to update.
+    # @param input The StoreInput object containing the updated store details.
+    # @return The updated Store object.
+    updateStore(storeRequest: StoreRequest!): StoreResponse
+
+    # Deletes a store by its ID.
+    # =====================
+    # @param id The unique identifier of the store to delete.
+    deleteStore(id: ID!): Boolean
+
 }

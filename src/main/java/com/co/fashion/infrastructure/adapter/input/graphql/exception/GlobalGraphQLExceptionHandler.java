@@ -23,37 +23,39 @@ public class GlobalGraphQLExceptionHandler extends DataFetcherExceptionResolverA
 
 	@Override
 	protected GraphQLError resolveToSingleError(Throwable ex, DataFetchingEnvironment env) {
-		if (ex instanceof NoSuchElementException) {
-			return GraphQLError.newError()
-					.message(ex.getMessage())
-					.locations(List.of(new SourceLocation(env.getField().getSourceLocation().getLine(),
-							env.getField().getSourceLocation().getColumn())))
-					.build();
-		}
-		if (ex instanceof IllegalArgumentException) {
-			return GraphQLError.newError()
-					.message("Illegal argument: " + ex.getMessage())
-					.path(env.getExecutionStepInfo().getPath()) // Obtén el path del error
-					.build();
-		}
-		if (ex instanceof ImageUploadException) {
-			return GraphQLError.newError()
-					.message("Image Upload Failed: " + ex.getMessage())
-					.locations(List.of(new SourceLocation(env.getField().getSourceLocation().getLine(),
-							env.getField().getSourceLocation().getColumn())))
-					.build();
-		}
-		if (ex instanceof RuntimeException) {
-			GraphQLError graphQLError = GraphQLError.newError()
-					.message("Runtime Exception: " + ex.getMessage())
-					.path(env.getExecutionStepInfo().getPath())
-					.build();
+		switch (ex) {
+			case NoSuchElementException noSuchElementException -> {
+				return GraphQLError.newError()
+						.message(ex.getMessage())
+						.locations(List.of(new SourceLocation(env.getField().getSourceLocation().getLine(),
+								env.getField().getSourceLocation().getColumn())))
+						.build();
+			}
+			case IllegalArgumentException illegalArgumentException -> {
+				return GraphQLError.newError()
+						.message("Illegal argument: " + ex.getMessage())
+						.path(env.getExecutionStepInfo().getPath()) // Obtén el path del error
+						.build();
+			}
+			case ImageUploadException imageUploadException -> {
+				return GraphQLError.newError()
+						.message("Image Upload Failed: " + ex.getMessage())
+						.locations(List.of(new SourceLocation(env.getField().getSourceLocation().getLine(),
+								env.getField().getSourceLocation().getColumn())))
+						.build();
+			}
+			case RuntimeException runtimeException -> {
+				GraphQLError graphQLError = GraphQLError.newError()
+						.message("Runtime Exception: " + ex.getMessage())
+						.path(env.getExecutionStepInfo().getPath())
+						.build();
 
-			log.info("GraphQLError: {}", graphQLError);
+				log.info("GraphQLError: {}", graphQLError);
 
-			return graphQLError;
+				return graphQLError;
+			}
+			default -> super.resolveToSingleError(ex, env);
 		}
-
 		return super.resolveToSingleError(ex, env);
 	}
 

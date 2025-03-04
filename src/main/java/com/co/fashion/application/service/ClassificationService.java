@@ -34,7 +34,7 @@ public class ClassificationService implements ClassificationUseCase {
 	@Transactional
 	public ClassificationResponse createClassification(ClassificationRequest classificationRequest) {
 		ClassificationType classificationType = classificationTypeRepositoryPort.findByName(classificationRequest.getType().getName())
-				.orElseThrow(() -> new RuntimeException(CLASSIFICATION_TYPE_NOT_FOUND + classificationRequest.getType()));
+				.orElseThrow(() -> new RuntimeException(CLASSIFICATION_TYPE_NOT_FOUND + classificationRequest.getType().getName()));
 
 		Classification classification = Classification.builder()
 				.name(classificationRequest.getName())
@@ -55,8 +55,8 @@ public class ClassificationService implements ClassificationUseCase {
 	public List<ClassificationResponse> createClassifications(List<CreateClassificationRequest> request) {
 		List<Classification> classifications = request.stream()
 				.map(classification -> {
-					ClassificationType classificationType = classificationTypeRepositoryPort.findById(classification.getType())
-                            .orElseThrow(() -> new RuntimeException(CLASSIFICATION_TYPE_NOT_FOUND + classification.getType()));
+					ClassificationType classificationType = classificationTypeRepositoryPort.findById(classification.getClassificationType().getId())
+                            .orElseThrow(() -> new RuntimeException(CLASSIFICATION_TYPE_NOT_FOUND + classification.getClassificationType().getId()));
 
 					if (classificationRepositoryPort.existsByNameAndType(classification.getName(), classificationType)) {
 						throw new KeyAlreadyExistsException("Classification already exists: " + classification.getName());
@@ -78,8 +78,8 @@ public class ClassificationService implements ClassificationUseCase {
 	public List<ClassificationResponse> updateClassifications(List<CreateClassificationRequest> request) {
 		List<Classification> classifications = request.stream()
 				.map(classification -> {
-					ClassificationType classificationType = classificationTypeRepositoryPort.findById(classification.getType())
-                            .orElseThrow(() -> new RuntimeException(CLASSIFICATION_TYPE_NOT_FOUND + classification.getType()));
+					ClassificationType classificationType = classificationTypeRepositoryPort.findById(classification.getClassificationType().getId())
+                            .orElseThrow(() -> new RuntimeException(CLASSIFICATION_TYPE_NOT_FOUND + classification.getClassificationType().getId()));
                     return Classification.builder()
 							.id(classification.getId())
                             .name(classification.getName())

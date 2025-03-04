@@ -6,5 +6,4 @@ public enum StoreType {
 	PHYSICAL_MULTI_BRAND,
 	PHYSICAL_OWN,
 	PHYSICAL_FLAG_SHIP,
-
 }

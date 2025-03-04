@@ -94,12 +94,12 @@ input ClassificationTypeRequest {
     """
     The name of the classification type.
     """
-    name: String!
+    name: String
 
     """
     The display name of the classification type.
     """
-    displayName: String!
+    displayName: String
 
     """
     The icon associated with the classification type.

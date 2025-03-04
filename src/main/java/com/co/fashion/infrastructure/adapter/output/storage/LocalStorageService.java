@@ -64,6 +64,6 @@ public class LocalStorageService implements ImageStoragePort {
 		}
 	}
 	private String sanitizeFileName(String fileName) {
-		return fileName.replaceAll("[^a-zA-Z0-9\\.\\-_]", "_");
+		return fileName.replaceAll("[^a-zA-Z0-9.\\-_]", "_");
 	}
 }

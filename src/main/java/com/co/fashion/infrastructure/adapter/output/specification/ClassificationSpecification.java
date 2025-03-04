@@ -10,7 +10,7 @@ public class ClassificationSpecification {
 	private ClassificationSpecification() {	}
 	public static Specification<Classification> filterByName(String name){
 		return (root, query, criteriaBuilder) -> {
-			if (name != null || name.isBlank()){
+			if (name != null && name.isBlank()){
 				return criteriaBuilder.conjunction();
 			}
 			return criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%"+ name.toLowerCase() + "%");

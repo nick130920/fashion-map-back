@@ -2,32 +2,68 @@
 type Query {
 
     #   Retrieves all brands.
+    # =====================
     #   @return A list of BrandResponse objects representing all brands.
     getAllBrands: [BrandResponse]
 
     #   Retrieves classifications based on the provided filter.
+    # =====================
     #   @param filter The ClassificationFilter object containing filter criteria.
+    #----------------------------------------------------------------
     #   @return A non-null list of ClassificationResponse objects matching the filter criteria.
     classifications(filter: ClassificationFilter): [ClassificationResponse!]!
 
     #    Retrieves a brand by its ID.
+    # =====================
     #   @param id The unique identifier of the brand.
     #   @return A BrandResponse object representing the brand with the specified ID.
     getBrandById(id: ID!): BrandResponse
 
 
     #   Retrieves all classification types.
+    # =====================
     #   @return A non-null list of ClassificationType objects representing all available classification types.
     getClassificationTypes: [ClassificationType!]!
 
     #   Retrieves classifications based on the provided filter request.
+    # =====================
     #   @param classificationFilterRequest The ClassificationFilter object containing filter criteria.
     #   @return A non-null list of ClassificationResponse objects matching the filter criteria.
     getClassifications(classificationFilterRequest: ClassificationFilter): [ClassificationResponse!]!
 
     #   Retrieves all classifications.
+    # =====================
     #   @return A non-null list of ClassificationResponse objects representing all classifications.
     getAllClassifications: [ClassificationResponse!]!
+
+    #   Retrieves a store by its ID.
+    # =====================
+    #   @param id The unique identifier of the store.
+    #   @return A Store object representing the store with the specified ID.
+    store(id: ID!): StoreResponse
+
+    #   Retrieves all stores.
+    # =====================
+    #   @return A non-null list of Store objects representing all stores.
+    stores: [StoreResponse!]
+
+    #   Retrieves all images by store ID.
+    # =====================
+    #   @param id The unique identifier of the store.
+    #   @return A non-null list of Image objects representing all images associated with the store.
+    imagesByStoreId(id: ID!): [Image!]
+
+
+    #   Retrieves all users.
+    # =====================
+    #   @return A non-null list of User objects representing all users.
+    users: [User!]
+
+    #   Retrieves a user by its ID.
+    # =====================
+    #   @param id The unique identifier of the user.
+    #   @return A User object representing the user with the specified ID.
+    user(id: ID!): User
 }
 
 

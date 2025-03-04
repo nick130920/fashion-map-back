@@ -13,7 +13,7 @@ type BrandResponse {
     # Website URL of the brand
     websiteUrl: String
     # List of stores associated with the brand
-    stores: [Store]
+    stores: [StoreResponse]
     # List of classifications associated with the brand
     classifications: [ClassificationResponse]
 }

@@ -1,12 +1,93 @@
-type Store {
+"""
+Store response
+"""
+type StoreResponse {
+    """
+    Unique identifier for the store
+    """
     id: ID!
+    """
+    Name of the store
+    """
     name: String
+    """
+    Location of the store
+    """
     location: String
+    """
+    Latitude of the store
+    """
+    latitude: Float
+    """
+    Longitude of the store
+    """
+    longitude: Float
+    """
+    Type of the store
+    """
+    type: StoreType
+    """
+    Images of the store
+    """
+    images: [Image]
+    """
+    Brand of the store
+    """
+    brand: BrandResponse
 }
 
+"""
+Type of the store
+"""
+enum StoreType {
+    """
+    Physical store
+    """
+    PHYSICAL,
+    """
+    Online store
+    """
+    ONLINE,
+    """
+    Hybrid store
+    """
+    HYBRID
+}
+
+"""
+Store request
+"""
 input StoreRequest {
+    """
+    Unique identifier for the store
+    """
     id: ID
+    """
+    Name of the store
+    """
     name: String
+    """
+    Location of the store
+    """
     location: String
+    """
+    Latitude of the store
+    """
+    latitude: Float
+    """
+    Longitude of the store
+    """
+    longitude: Float
+    """
+    Type of the store
+    """
+    type: StoreType
+    """
+    Brand of the store
+    """
+    brandId: ID!
+    """
+    Images of the store
+    """
     images: [Upload]
 }

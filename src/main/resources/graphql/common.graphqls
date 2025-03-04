@@ -15,3 +15,7 @@ type Image {
     id: ID!
     url: String!
 }
+type ImageResponse {
+    id: ID
+    url: String
+}

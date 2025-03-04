@@ -2,24 +2,45 @@ package com.co.fashion.application.port.input;
 
 import com.co.fashion.application.dto.request.StoreRequest;
 import com.co.fashion.application.dto.response.StoreResponse;
-import com.co.fashion.domain.model.Brand;
 import com.co.fashion.domain.model.Image;
-import com.co.fashion.domain.model.Store;
 
 import java.util.List;
 
 public interface StoreUseCase {
-	List<Store> createStores(List<StoreRequest> requests, Brand brand);
+	/**
+	 * Create a list of Stores.
+	 *
+	 * @param requests a list of StoreRequests
+	 * @return a list of StoreResponses
+	 */
+	List<StoreResponse> createStores(List<StoreRequest> requests);
 
-	Store createStore(StoreRequest storeInput, Brand brand);
+	/**
+	 * Create a Store.
+	 *
+	 * @param storeInput a StoreRequest
+	 * @return a StoreResponse
+	 */
+	StoreResponse createStore(StoreRequest storeInput);
 
-	List<Store> getAllStores();
+	/**
+	 * Get a list of all Stores.
+	 *
+	 * @return a list of StoreResponses
+	 */
+	List<StoreResponse> findAll();
 
+	/**
+	 * Update a Store.
+	 *
+	 * @param request a StoreRequest
+	 * @return a StoreResponse
+	 */
 	StoreResponse updateStore(StoreRequest request);
 
-	void deleteStore(Store store);
+	void deleteStore(Long id);
 
-	StoreResponse getStoreById(Long id);
+	StoreResponse findByID(Long id);
 
 	List<StoreResponse> getStoresByBrand(Long brandId);
 

@@ -32,7 +32,7 @@ public class Review extends Auditable {
     private Brand brand;
 
     @ManyToOne
-    @JoinColumn(name = "store_id", nullable = true)
+    @JoinColumn(name = "store_id", updatable = false)
     private Store store;
 
 
