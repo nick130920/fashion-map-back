@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     environment {
-        // Nombre de la imagen Docker que se creará
         IMAGE_NAME = "nick1309/fashionMap:latest"
     }
 
@@ -19,20 +18,19 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
-        stage('Docker Build') {
+        stage('Docker Compose Build and Deploy') {
             steps {
-                script {
-                    // Construye la imagen Docker utilizando el Dockerfile ubicado en la raíz del repositorio
-                    docker.build("${env.IMAGE_NAME}")
-                }
+                // Baja cualquier contenedor anterior (opcional)
+                sh 'docker-compose down || true'
+                // Construye la imagen de la aplicación (la sección "build" en el docker-compose.yml se usará)
+                sh 'docker-compose build'
+                sh 'docker-compose up -d'
             }
         }
-        stage('Deploy') {
-            steps {
-                script {
-                    // Ejecuta el contenedor Docker; en este ejemplo se expone el puerto 8080
-                    docker.image("${env.IMAGE_NAME}").run("-d -p 8080:8080")
-                }
+        post {
+            always {
+                // Puedes agregar acciones posteriores, como limpiar recursos o notificar resultados
+                echo 'Pipeline finalizado.'
             }
         }
     }

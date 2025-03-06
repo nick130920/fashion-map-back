@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: fashion_map
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: nick1309/fashionMap:latest
+    container_name: springboot-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8081:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/fashion_map
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+
+volumes:
+  postgres_data:
