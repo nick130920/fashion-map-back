@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 services:
   db:
     image: postgres:14
@@ -14,8 +14,6 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   app:
-    image: nick1309/fashionMap:latest
-    container_name: springboot-app
     build:
       context: .
       dockerfile: Dockerfile
