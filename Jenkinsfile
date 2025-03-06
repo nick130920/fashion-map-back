@@ -18,6 +18,12 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
             }
         }
+        stage('Verificar DOCKER_HOST') {
+            steps {
+                sh 'echo "DOCKER_HOST: $DOCKER_HOST"'
+            }
+        }
+
         stage('Docker Compose Build and Deploy') {
             steps {
                 // Baja cualquier contenedor anterior (opcional)
