@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clona el repositorio; ajusta la URL y la rama según corresponda
-                git branch: 'main', url: 'https://github.com/nick130920/fashion-map-back.git'
+                git branch: 'master', url: 'https://github.com/nick130920/fashion-map-back.git'
             }
         }
         stage('Build') {
