@@ -27,11 +27,5 @@ pipeline {
                 sh 'docker-compose up -d'
             }
         }
-        post {
-            always {
-                // Puedes agregar acciones posteriores, como limpiar recursos o notificar resultados
-                echo 'Pipeline finalizado.'
-            }
-        }
     }
 }
