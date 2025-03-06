@@ -53,7 +53,7 @@ public interface AddressUseCase {
          *
          * @param id an id
      */
-	void deleteAddress(Long id);
+	void deleteById(Long id);
 
 
 

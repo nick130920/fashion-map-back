@@ -91,7 +91,7 @@ public class AddressRestController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<AddressResponse> updateAddress(@PathVariable Long id, @RequestBody AddressRequest addressRequest) {
-        return ResponseEntity.ok(addressUseCase.updateAddress(id, addressRequest));
+        return ResponseEntity.ok(addressUseCase.updateAddress(addressRequest));
     }
 
     /**

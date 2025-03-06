@@ -122,7 +122,7 @@ public class AddressService implements AddressUseCase {
      */
     @Override
     @Transactional
-    public void deleteAddress(Long id) {
+    public void deleteById(Long id) {
         addressRepositoryPort.deleteById(id);
     }
 }

@@ -47,7 +47,7 @@ public class AddressGraphQlController {
 
 	@MutationMapping
 	public Boolean deleteAddress(@Argument Long id) {
-		addressUseCase.deleteAddress(id);
+		addressUseCase.deleteById(id);
 		return true;
 	}
 
